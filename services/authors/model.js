@@ -6,36 +6,32 @@ const authorSchema = new Schema(
   {
     nome: {
       type: String,
-      required: [true, "Il nome è obbligatorio"],
-      trim: true,
+      required: true,
     },
     cognome: {
       type: String,
-      required: [true, "Il cognome è obbligatorio"],
-      trim: true,
+      required: true,
     },
     email: {
       type: String,
-      required: [true, "L'email è obbligatoria"],
+      required: true,
       unique: true,
       lowercase: true,
-      trim: true,
-      match: [
-        /^\S+@\S+\.\S+$/,
-        "Formato email non valido"
-      ],
     },
     password: { 
-        type: String, 
-        required: true, 
-        select: false 
+      type: String, 
+      // La password non è più obbligatoria
+      select: false 
+    },
+    // Campo per l'ID di Google
+    googleId: {
+      type: String,
     },
     dataDiNascita: {
       type: Date,
     },
     avatar: {
       type: String,
-      trim: true,
     },
   },
   {
